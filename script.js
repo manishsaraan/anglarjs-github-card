@@ -1,20 +1,20 @@
 // Code goes here
 (function() {
   var app = angular.module('myApp', []);
-      app.controller('MainController',["$http","$scope", "$interval", "$anchorScroll", "$location", function($http, $scope, $interval, $anchorScroll, $location) {
+      app.controller('MainController',["github","$scope", "$interval", "$anchorScroll", "$location", function(github, $scope, $interval, $anchorScroll, $location) {
       $scope.message = "Github Viewer!";
       $scope.isError = false;
       $scope.repoSortOrder = "-stargazers_count";
       $scope.countdown = 10;   
-      var onUserComplete = function(res) {
+      var onUserComplete = function(data) {
         $scope.isError = false;
-        $scope.user = res.data;      
-        $http.get($scope.user.repos_url).then(onRepos, onError);
+        $scope.user = data;      
+        github.getRepos($scope.user).then(onRepos, onError);
       }; 
       
       //fetch all the repos
-      var onRepos = function(res){
-         $scope.repos = res.data;
+      var onRepos = function(data){
+         $scope.repos = data;
          $location.hash("userDetails");
          $anchorScroll();
       }
@@ -37,8 +37,7 @@
       };
 
       $scope.search = function(username){
-               $http.get("https://api.github.com/users/"+username)
-                    .then(onUserComplete, onError);
+              github.getUser(username).then(onUserComplete, onError);
                //if user beats the countdown, cancel search
                if(countdownInterval){
                  $interval.cancel(countdownInterval);
