@@ -7,12 +7,16 @@
     
       var onUserComplete = function(res) {
         $scope.user = res.data;      
-
+        $http.get($scope.user.repos_url).then(onRepos, onError);
       }; 
-
+      
+      //fetch all the repos
+      var onRepos = function(res){
+         $scope.repos = res.data;
+      }
       var onError = function() {
         $scope.isError = true;
-        $scope.error = "could not fetch ther user";
+        $scope.error = "could not fetch the data";
       };
 
       $scope.search = function(username){
