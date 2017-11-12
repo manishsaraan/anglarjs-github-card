@@ -1,0 +1,24 @@
+{
+  "name": "anglarjs-github-card",
+  "version": "1.0.0",
+  "description": "Angularjs App To View Github User",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/manishsaraan/anglarjs-github-card.git"
+  },
+  "author": "“manishsaraan” <“manish021js@gmail.com”>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/manishsaraan/anglarjs-github-card/issues"
+  },
+  "homepage": "https://github.com/manishsaraan/anglarjs-github-card#readme",
+  "devDependencies": {
+    "http-server": "^0.10.0",
+    "open": "0.0.5"
+  }
+}
