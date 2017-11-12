@@ -4,7 +4,7 @@
       app.controller('MainController',["$http","$scope", function($http, $scope) {
       $scope.message = "Github Viewer!";
       $scope.isError = false;
-    
+      $scope.repoSortOrder = "-stargazers_count";
       var onUserComplete = function(res) {
         $scope.user = res.data;      
         $http.get($scope.user.repos_url).then(onRepos, onError);
