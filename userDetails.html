@@ -1,0 +1,44 @@
+            <div class="span4 well" ng-if=" isError=== false && user">
+                <div class="row">                   
+                    <div class="span1">
+                        <a href="{{'https://github.com/'+username}}" class="thumbnail" target="_blank">
+                           <img height="200" width="200" ng-src="{{user.avatar_url}}" title="{{user.name}}"/> </a>
+                    </div>
+                    <div class="span3">                        
+                        <p> <strong>{{user.name}}</strong></p>
+                        <p>Bio: {{user.bio}}</p>
+                        <p>Total Repos: {{user.public_repos}}</p>
+                        <p>Total Gists: {{user.public_gists}}</p>      
+                        <p>Followers: {{user.followers}}</p>  
+                        <p>Following: {{user.following}}</p> 
+                        <p>Email: {{user.email || "N/A"}}</p>
+                       <div>
+                        <div>
+                          Order: <select ng-model="repoSortOrder">
+                            <option value="+name">Name</option>
+                            <option value="-stargazers_count">Stars</option>
+                            <option value="+language">Language</option>
+                          </select>
+                        </div>
+                         <table class="table">
+                           <head>
+                             <tr>
+                               <th>Name</th>
+                               <th>Stars</th>
+                               <th>Language</th>
+                               <th>Visit</th>
+                             </tr>
+                           <tbody>
+                              <tr ng-repeat="repo in repos | orderBy:repoSortOrder">
+                                <td>{{repo.name}}</td>
+                                <td>{{repo.stargazers_count | number}}</td>
+                                <td>{{repo.language}}</td>
+                                <td><a href="{{repo.html_url}}">Visit</a></td>
+                              </tr>
+                           </tbody>
+                           </head>
+                         </table>
+                       </div>
+                    </div>
+                </div>
+            </div> 

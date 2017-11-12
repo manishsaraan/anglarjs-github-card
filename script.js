@@ -6,6 +6,7 @@
       $scope.isError = false;
       $scope.repoSortOrder = "-stargazers_count";
       var onUserComplete = function(res) {
+        $scope.isError = false;
         $scope.user = res.data;      
         $http.get($scope.user.repos_url).then(onRepos, onError);
       }; 
