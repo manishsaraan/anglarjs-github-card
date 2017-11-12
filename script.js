@@ -2,16 +2,23 @@
 (function() {
   var app = angular.module('myApp', []);
       app.controller('MainController',["$http","$scope", function($http, $scope) {
-      $scope.message = "Hello Angular!";
+      $scope.message = "Github Viewer!";
       $scope.isError = false;
+    
       var onUserComplete = function(res) {
-        $scope.user = res.data;
+        $scope.user = res.data;      
+
       }; 
+
       var onError = function() {
         $scope.isError = true;
         $scope.error = "could not fetch ther user";
-      }
-      $http.get("https://api.github.com/users/manishsaraan")
-        .then(onUserComplete, onError);
+      };
+
+      $scope.search = function(username){
+               $http.get("https://api.github.com/users/"+username)
+                    .then(onUserComplete, onError);
+      };
+
     }]);
 })();
