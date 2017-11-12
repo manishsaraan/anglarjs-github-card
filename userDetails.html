@@ -1,26 +1,38 @@
-            <div class="span4 well" ng-if=" isError=== false && user">
-                <div class="row">                   
-                    <div class="span1">
-                        <a href="{{'https://github.com/'+username}}" class="thumbnail" target="_blank">
-                           <img height="200" width="200" ng-src="{{user.avatar_url}}" title="{{user.name}}"/> </a>
-                    </div>
-                    <div class="span3">                        
-                        <p> <strong>{{user.name}}</strong></p>
-                        <p>Bio: {{user.bio}}</p>
-                        <p>Total Repos: {{user.public_repos}}</p>
-                        <p>Total Gists: {{user.public_gists}}</p>      
-                        <p>Followers: {{user.followers}}</p>  
-                        <p>Following: {{user.following}}</p> 
-                        <p>Email: {{user.email || "N/A"}}</p>
-                       <div>
-                        <div>
-                          Order: <select ng-model="repoSortOrder">
-                            <option value="+name">Name</option>
-                            <option value="-stargazers_count">Stars</option>
-                            <option value="+language">Language</option>
-                          </select>
-                        </div>
-                         <table class="table">
+            <div class="container" id="userDetails">
+                <div class="row"> 
+                
+                <table class="table table-bordered">                       
+                           <tbody>
+                              <tr> <td>Name: </td> <td> {{user.name}} </td> </tr>
+                              <tr> 
+                                <td>Profile Pic.: </td> 
+                                <td> <a href="{{'https://github.com/'+username}}" target="_blank">
+                                    <img class="img-circle" height="100" width="100" ng-src="{{user.avatar_url}}" title="{{user.name}}"/> </a>
+                                </td> 
+                              </tr>
+                              <tr> <td>Bio:  </td> <td> {{user.bio}} </td> </tr>
+                              <tr> <td>Total Repos:  </td> <td> {{user.public_repos}} </td> </tr>
+                              <tr> <td>Total Gists:  </td> <td> {{user.public_gists}} </td> </tr>
+                              <tr> <td>Followers:  </td> <td> {{user.followers}} </td> </tr>
+                              <tr> <td>Following:  </td> <td> {{user.following}} </td> </tr>
+                              <tr> <td>Email:  </td> <td> {{user.email || "N/A"}} </td> </tr>                              
+                           </tbody>
+                         
+                 </table>                
+                    
+                    <div class="span3">  
+                    <div class="user_repos"> Repos: </div>
+                     <div class="col-md-12 filter-custom no-padding">
+                           <span class="order-text col-md-1 no-padding"> Order:  </span> 
+                           <div class=" col-md-2">
+                            <select ng-model="repoSortOrder" class="form-control">
+                              <option value="+name">Name</option>
+                              <option value="-stargazers_count">Stars</option>
+                              <option value="+language">Language</option>
+                            </select>
+                          </div>
+                      </div>                    
+                      <table class="table table-bordered">
                            <head>
                              <tr>
                                <th>Name</th>

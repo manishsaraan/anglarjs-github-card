@@ -1,0 +1,21 @@
+#userDetails{
+	padding-top: 30px;
+}
+.filter-custom{
+	padding-top: 15px;
+	padding-bottom: 15px;
+}
+.order-text{
+	font-weight: bold;
+	font-size: 18px;
+}
+.no-padding {
+	padding-left: 0;
+	padding-right: 0;
+}
+.user_repos{
+    font-size: 20px;
+    font-weight: bold;
+    float: left;
+    width: 100%;
+}
